@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\FibonacciNumbers.cs" />
+    <Compile Include="Logic\FibonacciRange.cs" />
+    <Compile Include="Logic\FibonacciSequence.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
