@@ -7,23 +7,43 @@ using System.Threading.Tasks;
 
 namespace _8.FibonacciRow.Logic
 {
-    class FibonacciSequence : IEnumerable
+    class FibonacciSequence
     {
-        public FibonacciSequence(FibonacciNumbers numbers)
+        public FibonacciSequence(int leftSearchLimit, int rightSearchLimit)
         {
-            this.numbers = numbers;
+            this.leftSearchLimit = leftSearchLimit;
+            this.rightSearchLimit = rightSearchLimit;
         }
 
-        FibonacciNumbers numbers;
+        private int leftSearchLimit;
+        private int rightSearchLimit;
 
-        //public 
+        private FibonacciNumbers numbers = new FibonacciNumbers();
+        FibonacciRange range = new FibonacciRange();
 
-
-
-        public IEnumerator GetEnumerator()
+        public IEnumerable<double> GetFibonacciNumbers()
         {
-            yield return this;
+            range = numbers.GetClosestFibonacciRange(leftSearchLimit);
+
+            while (range.LeftNumber < rightSearchLimit)
+            {
+                if (!(range.LeftNumber < leftSearchLimit))
+                {
+                    yield return range.LeftNumber;
+                }
+                GetNextFibonacci();
+            }
+
+            yield break;
         }
+
+        private void GetNextFibonacci()
+        {
+            double tempNumber = range.LeftNumber + range.RightNumber;
+            range.LeftNumber = range.RightNumber;
+            range.RightNumber = tempNumber;
+        }
+
     }
 
 

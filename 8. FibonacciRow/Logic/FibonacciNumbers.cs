@@ -12,10 +12,26 @@ namespace _8.FibonacciRow.Logic
 
         FibonacciRange range = new FibonacciRange();
 
-        //private double closestFibonacciLeft;
-        //private int closestFibonacciRight;
+        public double Pheta {
+            get
+            {
+                return pheta;
+            } }
+        public FibonacciRange Range 
+        {
+            get
+            {
+                return range;
+            }
+            set
+            {
+                if (value.LeftNumber > 0 && value.RightNumber > 0)
+                {
+                    range = value;
+                }
+            }
+        }
 
-        public double Pheta { get; }
 
         public FibonacciRange GetClosestFibonacciRange(int number)
         {
@@ -46,7 +62,7 @@ namespace _8.FibonacciRow.Logic
         {
             int lbound = FibonacciLowerbound(number);
 
-            if (flag)
+            if (isLeftNumber)
             {
                 return FibonacciBineFormula(lbound);
             }

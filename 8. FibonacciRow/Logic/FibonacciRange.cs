@@ -19,9 +19,13 @@ namespace _8.FibonacciRow.Logic
             }
             set 
             {
-                if (value > 0)
+                if (value >= 0)
                 {
                     leftNumber = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("number should be greater than 0");
                 }
             } 
         }
@@ -33,9 +37,13 @@ namespace _8.FibonacciRow.Logic
             }
             set
             {
-                if (value > 0)
+                if (value >= 0)
                 {
                     rightNumber = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("number should be greater than 0");
                 }
             }
         }

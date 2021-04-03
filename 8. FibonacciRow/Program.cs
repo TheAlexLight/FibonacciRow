@@ -21,20 +21,32 @@ namespace _8.FibonacciRow
                 //}
 
                 FibonacciNumbers fibonacci = new FibonacciNumbers();
-                Stopwatch stopwatch = new Stopwatch();
 
-                stopwatch.Start();
-                fibonacci.GetClosestFibonacciRange(20);
-                stopwatch.Stop();
+                FibonacciSequence sequence = new FibonacciSequence(364, 825);
 
-                Console.WriteLine("Потрачено тактов на выполнение: " + stopwatch.ElapsedTicks);
+                IEnumerable<double> numbers = sequence.GetFibonacciNumbers();
+
+                foreach (var item in numbers)
+                {
+                    Console.WriteLine(item);
+                }
+
+                //Stopwatch stopwatch = new Stopwatch();
+
+                //stopwatch.Start();
+                //fibonacci.GetClosestFibonacciRange(20);
+                //stopwatch.Stop();
+
+                //Console.WriteLine("Потрачено тактов на выполнение: " + stopwatch.ElapsedTicks);
 
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine($"ERROR: {ex.Message}");
+                Console.ReadKey();
                 //Instruction
+
             }
         }
     }
