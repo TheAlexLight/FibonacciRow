@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using _8.FibonacciRow.Logic;
-using ConsolePrinterLibrary;
+using ConsoleTaskLibrary;
 
 namespace _8.FibonacciRow.View
 {
@@ -15,8 +16,8 @@ namespace _8.FibonacciRow.View
             this.sequence = sequence;
         }
 
-        FibonacciSequence sequence;
-        ConsolePrinter printer = new ConsolePrinter();
+        readonly FibonacciSequence sequence;
+        readonly ConsolePrinter printer = new ConsolePrinter();
 
         public void ShowFibonacciSequence()
         {

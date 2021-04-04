@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using _8.FibonacciRow.Controller;
 using _8.FibonacciRow.Logic;
 using _8.FibonacciRow.View;
 
@@ -22,9 +23,12 @@ namespace _8.FibonacciRow
                 //    throw new ArgumentException();
                 //}
 
-                FibonacciNumbers fibonacci = new FibonacciNumbers();
+                FibonacciController controller = new FibonacciController();
+                FibonacciStartData startData = new FibonacciStartData();
 
-                FibonacciSequence sequence = new FibonacciSequence(364, 825);
+                startData = controller.CheckStartArguments(args[0], args[1]);
+
+                FibonacciSequence sequence = new FibonacciSequence(startData.LeftFibonacciLimit, startData.RightFibonacciLimit);
 
                // IEnumerable<double> receivedSequence = sequence.GetFibonacciNumbers();
 
