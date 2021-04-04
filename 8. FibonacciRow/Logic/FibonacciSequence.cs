@@ -14,9 +14,11 @@ namespace _8.FibonacciRow.Logic
             this.leftSearchLimit = leftSearchLimit;
             this.rightSearchLimit = rightSearchLimit;
         }
-
         private int leftSearchLimit;
         private int rightSearchLimit;
+
+        public int LeftSearchLimit { get { return leftSearchLimit; } }
+        public int RightSearchLimit { get { return rightSearchLimit; } }
 
         private FibonacciNumbers numbers = new FibonacciNumbers();
         FibonacciRange range = new FibonacciRange();

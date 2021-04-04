@@ -1,11 +1,13 @@
-﻿using _8.FibonacciRow.Logic;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using _8.FibonacciRow.Logic;
+using _8.FibonacciRow.View;
 
 namespace _8.FibonacciRow
 {
@@ -24,20 +26,11 @@ namespace _8.FibonacciRow
 
                 FibonacciSequence sequence = new FibonacciSequence(364, 825);
 
-                IEnumerable<double> numbers = sequence.GetFibonacciNumbers();
+               // IEnumerable<double> receivedSequence = sequence.GetFibonacciNumbers();
 
-                foreach (var item in numbers)
-                {
-                    Console.WriteLine(item);
-                }
+                SequenceViewer viewer = new SequenceViewer(sequence);
 
-                //Stopwatch stopwatch = new Stopwatch();
-
-                //stopwatch.Start();
-                //fibonacci.GetClosestFibonacciRange(20);
-                //stopwatch.Stop();
-
-                //Console.WriteLine("Потрачено тактов на выполнение: " + stopwatch.ElapsedTicks);
+                viewer.ShowFibonacciSequence();
 
                 Console.ReadKey();
             }
