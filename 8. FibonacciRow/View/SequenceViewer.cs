@@ -21,7 +21,7 @@ namespace _8.FibonacciRow.View
 
         public void ShowFibonacciSequence()
         {
-            IEnumerable<double> receivedSequence = _sequence.GetFibonacciNumbers();
+            IEnumerable<double> receivedSequence = _sequence.GetSequence();
 
             var last = receivedSequence.Last();
 

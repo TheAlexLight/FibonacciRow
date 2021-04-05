@@ -20,12 +20,12 @@ namespace _8.FibonacciRow.Logic
         private readonly FibonacciNumbers numbers = new FibonacciNumbers();
         private FibonacciRange _range = new FibonacciRange();
 
-        public int LeftSearchLimit { get { return _leftSearchLimit; } }
-        public int RightSearchLimit { get { return _rightSearchLimit; } }
+        public int LeftSearchLimit => _leftSearchLimit;
+        public int RightSearchLimit => _rightSearchLimit;
 
-        public IEnumerable<double> GetFibonacciNumbers()
+        public IEnumerable<double> GetSequence()
         {
-            _range = numbers.GetClosestFibonacciRange(_leftSearchLimit);
+            _range = numbers.GetClosestFibonacciNumbers(_leftSearchLimit);
 
             while (_range.LeftNumber < _rightSearchLimit)
             {
@@ -33,13 +33,13 @@ namespace _8.FibonacciRow.Logic
                 {
                     yield return _range.LeftNumber;
                 }
-                GetNextFibonacci();
+                GetNextNumber();
             }
 
             yield break;
         }
 
-        private void GetNextFibonacci()
+        private void GetNextNumber()
         {
             double tempNumber = _range.LeftNumber + _range.RightNumber;
             _range.LeftNumber = _range.RightNumber;

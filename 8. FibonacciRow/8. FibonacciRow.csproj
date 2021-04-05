@@ -48,9 +48,11 @@
   <ItemGroup>
     <Compile Include="Controller\FibonacciController.cs" />
     <Compile Include="Controller\FibonacciStartData.cs" />
+    <Compile Include="Interfaces\ISequence.cs" />
     <Compile Include="Logic\FibonacciNumbers.cs" />
     <Compile Include="Logic\FibonacciRange.cs" />
     <Compile Include="Logic\FibonacciSequence.cs" />
+    <Compile Include="Logic\Sequence.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\Validator.cs" />

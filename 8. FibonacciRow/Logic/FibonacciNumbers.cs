@@ -11,8 +11,6 @@ namespace _8.FibonacciRow.Logic
     {
         private readonly double _pheta = 0.5 * (Math.Sqrt(5) + 1);
 
-        private FibonacciRange _range = new FibonacciRange();
-
         public double Pheta 
         {
             get
@@ -21,34 +19,19 @@ namespace _8.FibonacciRow.Logic
             } 
         }
 
-        public FibonacciRange Range 
-        {
-            get
-            {
-                return _range;
-            }
-            set
-            {
-                if (value.LeftNumber <= 0 && value.RightNumber <= 0)
-                {
-                    throw new ArgumentException(Constant.NEGATIVE_RANGE);
-                }
+        public FibonacciRange Range;
 
-                _range = value;
-            }
+        public FibonacciRange GetClosestFibonacciNumbers(int number)
+        {
+            Range.LeftNumber = FibonacciRange(number, true);
+            Range.RightNumber = FibonacciRange(number, false);
+
+            return Range;
         }
 
-        public FibonacciRange GetClosestFibonacciRange(int number)
+        private double FibonacciBineFormula(int degree)
         {
-            _range.LeftNumber = FibonacciRange(number, true);
-            _range.RightNumber = FibonacciRange(number, false);
-
-            return _range;
-        }
-
-        private double FibonacciBineFormula(int n)
-        {
-            return (Math.Pow(_pheta, n) - Math.Pow(1 - _pheta, n)) / Math.Sqrt(5);
+            return (Math.Pow(_pheta, degree) - Math.Pow(1 - _pheta, degree)) / Math.Sqrt(5);
         }
 
         private int FibonacciLowerbound(double N, int minValue = 0, int maxValue = 1000)

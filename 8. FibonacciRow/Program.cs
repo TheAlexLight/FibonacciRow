@@ -32,9 +32,7 @@ namespace _8.FibonacciRow
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"ERROR: {ex.Message}");
-                Console.ReadKey();
-                //Instruction
+                Console.WriteLine("Instruction"); //Instruction
 
             }
         }
