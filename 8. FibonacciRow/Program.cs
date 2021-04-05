@@ -18,23 +18,15 @@ namespace _8.FibonacciRow
         {
             try
             {
+
                 //if (args.Length != 2)
                 //{
                 //    throw new ArgumentException();
                 //}
 
                 FibonacciController controller = new FibonacciController();
-                FibonacciStartData startData = new FibonacciStartData();
 
-                startData = controller.CheckStartArguments(args[0], args[1]);
-
-                FibonacciSequence sequence = new FibonacciSequence(startData.LeftFibonacciLimit, startData.RightFibonacciLimit);
-
-               // IEnumerable<double> receivedSequence = sequence.GetFibonacciNumbers();
-
-                SequenceViewer viewer = new SequenceViewer(sequence);
-
-                viewer.ShowFibonacciSequence();
+                controller.ExecuteMainOperations(args[0], args[1]);
 
                 Console.ReadKey();
             }

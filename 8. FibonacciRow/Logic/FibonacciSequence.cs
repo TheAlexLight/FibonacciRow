@@ -11,27 +11,27 @@ namespace _8.FibonacciRow.Logic
     {
         public FibonacciSequence(int leftSearchLimit, int rightSearchLimit)
         {
-            this.leftSearchLimit = leftSearchLimit;
-            this.rightSearchLimit = rightSearchLimit;
+            _leftSearchLimit = leftSearchLimit;
+            _rightSearchLimit = rightSearchLimit;
         }
-        private readonly int leftSearchLimit;
-        private readonly int rightSearchLimit;
-
-        public int LeftSearchLimit { get { return leftSearchLimit; } }
-        public int RightSearchLimit { get { return rightSearchLimit; } }
+        private readonly int _leftSearchLimit;
+        private readonly int _rightSearchLimit;
 
         private readonly FibonacciNumbers numbers = new FibonacciNumbers();
-        FibonacciRange range = new FibonacciRange();
+        private FibonacciRange _range = new FibonacciRange();
+
+        public int LeftSearchLimit { get { return _leftSearchLimit; } }
+        public int RightSearchLimit { get { return _rightSearchLimit; } }
 
         public IEnumerable<double> GetFibonacciNumbers()
         {
-            range = numbers.GetClosestFibonacciRange(leftSearchLimit);
+            _range = numbers.GetClosestFibonacciRange(_leftSearchLimit);
 
-            while (range.LeftNumber < rightSearchLimit)
+            while (_range.LeftNumber < _rightSearchLimit)
             {
-                if (!(range.LeftNumber < leftSearchLimit))
+                if (!(_range.LeftNumber < _leftSearchLimit))
                 {
-                    yield return range.LeftNumber;
+                    yield return _range.LeftNumber;
                 }
                 GetNextFibonacci();
             }
@@ -41,12 +41,9 @@ namespace _8.FibonacciRow.Logic
 
         private void GetNextFibonacci()
         {
-            double tempNumber = range.LeftNumber + range.RightNumber;
-            range.LeftNumber = range.RightNumber;
-            range.RightNumber = tempNumber;
+            double tempNumber = _range.LeftNumber + _range.RightNumber;
+            _range.LeftNumber = _range.RightNumber;
+            _range.RightNumber = tempNumber;
         }
-
     }
-
-
 }

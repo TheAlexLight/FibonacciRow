@@ -13,19 +13,19 @@ namespace _8.FibonacciRow.View
     {
         public SequenceViewer(FibonacciSequence sequence)
         {
-            this.sequence = sequence;
+            _sequence = sequence;
         }
 
-        readonly FibonacciSequence sequence;
-        readonly ConsolePrinter printer = new ConsolePrinter();
+        private readonly FibonacciSequence _sequence;
+        private readonly ConsolePrinter _printer = new ConsolePrinter();
 
         public void ShowFibonacciSequence()
         {
-            IEnumerable<double> receivedSequence = sequence.GetFibonacciNumbers();
+            IEnumerable<double> receivedSequence = _sequence.GetFibonacciNumbers();
 
             var last = receivedSequence.Last();
 
-            printer.Write(string.Format(Constant.FIBONACCI_RESULT,sequence.LeftSearchLimit,sequence.RightSearchLimit));
+            _printer.Write(string.Format(Constant.FIBONACCI_RESULT,_sequence.LeftSearchLimit,_sequence.RightSearchLimit));
 
             foreach (var number in receivedSequence)
             {

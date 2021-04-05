@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _8.FibonacciRow.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,15 @@ namespace _8.FibonacciRow.Logic
 {
     class FibonacciNumbers
     {
-        private readonly double pheta = 0.5 * (Math.Sqrt(5) + 1);
+        private readonly double _pheta = 0.5 * (Math.Sqrt(5) + 1);
 
-        FibonacciRange range = new FibonacciRange();
+        private FibonacciRange _range = new FibonacciRange();
 
         public double Pheta 
         {
             get
             {
-                return pheta;
+                return _pheta;
             } 
         }
 
@@ -24,32 +25,30 @@ namespace _8.FibonacciRow.Logic
         {
             get
             {
-                return range;
+                return _range;
             }
             set
             {
-                if (value.LeftNumber > 0 && value.RightNumber > 0)
+                if (value.LeftNumber <= 0 && value.RightNumber <= 0)
                 {
-                    range = value;
+                    throw new ArgumentException(Constant.NEGATIVE_RANGE);
                 }
-                else
-                {
-                    throw new ArgumentException();
-                }
+
+                _range = value;
             }
         }
 
         public FibonacciRange GetClosestFibonacciRange(int number)
         {
-            range.LeftNumber = FibonacciRange(number, true);
-            range.RightNumber = FibonacciRange(number, false);
+            _range.LeftNumber = FibonacciRange(number, true);
+            _range.RightNumber = FibonacciRange(number, false);
 
-            return range;
+            return _range;
         }
 
         private double FibonacciBineFormula(int n)
         {
-            return (Math.Pow(pheta, n) - Math.Pow(1 - pheta, n)) / Math.Sqrt(5);
+            return (Math.Pow(_pheta, n) - Math.Pow(1 - _pheta, n)) / Math.Sqrt(5);
         }
 
         private int FibonacciLowerbound(double N, int minValue = 0, int maxValue = 1000)

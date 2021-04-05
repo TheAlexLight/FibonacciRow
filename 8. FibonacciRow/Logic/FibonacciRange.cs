@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _8.FibonacciRow.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,24 +9,24 @@ namespace _8.FibonacciRow.Logic
 {
     struct FibonacciRange
     {
-        private double leftNumber;
-        private double rightNumber;
+        private double _leftNumber;
+        private double _rightNumber;
 
         public double LeftNumber 
         { 
             get 
             {
-                return leftNumber;
+                return _leftNumber;
             }
             set 
             {
                 if (value >= 0)
                 {
-                    leftNumber = value;
+                    _leftNumber = value;
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("number should be greater than 0");
+                    throw new ArgumentException(Constant.NEGATIVE_NUMBER);
                 }
             } 
         }
@@ -33,17 +34,17 @@ namespace _8.FibonacciRow.Logic
         {
             get
             {
-                return rightNumber;
+                return _rightNumber;
             }
             set
             {
                 if (value >= 0)
                 {
-                    rightNumber = value;
+                    _rightNumber = value;
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("number should be greater than 0");
+                    throw new ArgumentException(Constant.NEGATIVE_NUMBER);
                 }
             }
         }

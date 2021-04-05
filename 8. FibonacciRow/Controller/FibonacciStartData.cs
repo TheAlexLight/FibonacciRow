@@ -8,8 +8,6 @@ namespace _8.FibonacciRow.Controller
 {
     struct FibonacciStartData
     {
-        public const int MAX_FIBONACCI_LIMIT = 1000000000;
-
         private int leftFibonacciLimit;
         private int rightFibonacciLimit;
 
