@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _8.FibonacciRow.Interfaces;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace _8.FibonacciRow.Logic
 {
-    class FibonacciSequence
+    class FibonacciSequence: ISequence
     {
         public FibonacciSequence(int leftSearchLimit, int rightSearchLimit)
         {

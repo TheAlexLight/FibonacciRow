@@ -42,64 +42,46 @@ namespace _8.FibonacciRow
         {
             FibonacciStartData fibonacciParameters = new FibonacciStartData
             {
-                LeftFibonacciLimit = GetFibonacciValue(leftFibonacciLimit, Constant.FIBONACCI_LEFT_LIMIT),
-                RightFibonacciLimit = GetFibonacciValue(rightFibonacciLimit, Constant.FIBONACCI_RIGHT_LIMIT)
+                LeftFibonacciLimit = GetFibonacciValue(leftFibonacciLimit),
+                RightFibonacciLimit = GetFibonacciValue(rightFibonacciLimit)
             };
 
-            bool rightData = false;
+            if (!_validArguments.RightLimitGreater(fibonacciParameters.LeftFibonacciLimit, fibonacciParameters.RightFibonacciLimit))
+            {
+                _printer.WriteLine(Constant.RIGHT_SHOULD_BE_GREATER);
+                _printer.ShowInstruction(Constant.INSTRUCTION, string.Format(Constant.FIRST_ARGUMENT, Constant.MAX_FIBONACCI_LIMIT),
+                    string.Format(Constant.SECOND_ARGUMENT, Constant.MAX_FIBONACCI_LIMIT));
 
-                while (!rightData)
-                {
-                    if (!_validArguments.RightLimitGreater(fibonacciParameters.LeftFibonacciLimit, fibonacciParameters.RightFibonacciLimit))
-                    {
-                        _printer.WriteLine(Constant.RIGHT_SHOULD_BE_GREATER);
-
-                        _printer.Write(string.Format(Constant.ENTER_PROMPT, Constant.FIBONACCI_LEFT_LIMIT));
-                        fibonacciParameters.LeftFibonacciLimit = GetFibonacciValue(_printer.ReadLine(), Constant.FIBONACCI_LEFT_LIMIT);
-
-                        _printer.Write(string.Format(Constant.ENTER_PROMPT, Constant.FIBONACCI_RIGHT_LIMIT));
-                        fibonacciParameters.RightFibonacciLimit = GetFibonacciValue(_printer.ReadLine(), Constant.FIBONACCI_RIGHT_LIMIT);
-
-                        continue;
-                    }
-
-                    rightData = true;
-                }
+                Environment.Exit(-1);
+            }
 
             return fibonacciParameters;
         }
 
-        private int GetFibonacciValue(string fibonacciNumber, string valueName)
+        private int GetFibonacciValue(string fibonacciNumber)
         {
-            int result = -1;
-            bool successFormat = false;
             Converter converterArgs = new Converter();
-            
-            while (!successFormat)
+
+            int result = converterArgs.TryParseToInt(fibonacciNumber);
+
+            if (result != -1)
             {
-                result = converterArgs.TryParseToInt(fibonacciNumber);
-
-                if (result != -1)
+                if (!_validArguments.CheckIntOnPositive(result, Constant.MAX_FIBONACCI_LIMIT))
                 {
-                    if (!_validArguments.CheckIntOnPositive(result, Constant.MAX_FIBONACCI_LIMIT))
-                    {
-                        _printer.WriteLine(Constant.WRONG_BOUNDARIES);
-                        _printer.Write(string.Format(Constant.ENTER_PROMPT, valueName));
+                    _printer.WriteLine(Constant.WRONG_BOUNDARIES);
+                    _printer.ShowInstruction(Constant.INSTRUCTION, string.Format(Constant.FIRST_ARGUMENT, Constant.MAX_FIBONACCI_LIMIT),
+                        string.Format(Constant.SECOND_ARGUMENT, Constant.MAX_FIBONACCI_LIMIT));
 
-                        fibonacciNumber = _printer.ReadLine();
-                    }
-                    else
-                    {
-                        successFormat = true;
-                    }
+                    Environment.Exit(-1);
                 }
-                else
-                {
-                    _printer.WriteLine(Constant.INT_WRONG_TYPE);
-                    _printer.Write(string.Format(Constant.ENTER_PROMPT, valueName));
+            }
+            else
+            {
+                _printer.WriteLine(Constant.INT_WRONG_TYPE);
+                _printer.ShowInstruction(Constant.INSTRUCTION, string.Format(Constant.FIRST_ARGUMENT, Constant.MAX_FIBONACCI_LIMIT),
+                    string.Format(Constant.SECOND_ARGUMENT, Constant.MAX_FIBONACCI_LIMIT));
 
-                    fibonacciNumber = _printer.ReadLine();
-                }
+                Environment.Exit(-1);
             }
 
             return result;

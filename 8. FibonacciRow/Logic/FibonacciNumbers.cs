@@ -19,14 +19,14 @@ namespace _8.FibonacciRow.Logic
             } 
         }
 
-        public FibonacciRange Range;
+        private FibonacciRange range;
 
         public FibonacciRange GetClosestFibonacciNumbers(int number)
         {
-            Range.LeftNumber = FibonacciRange(number, true);
-            Range.RightNumber = FibonacciRange(number, false);
+            range.LeftNumber = FibonacciRange(number, true);
+            range.RightNumber = FibonacciRange(number, false);
 
-            return Range;
+            return range;
         }
 
         private double FibonacciBineFormula(int degree)
